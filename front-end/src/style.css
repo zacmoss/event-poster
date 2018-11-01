@@ -191,7 +191,6 @@ html, body {
 .events_array {
     height: 70%;
     overflow-y: scroll;
-    border: 5px red solid;
 }
 .event_container {
     /*border: 1px black solid;*/
