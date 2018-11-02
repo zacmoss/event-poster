@@ -108,11 +108,20 @@ class EventFeed extends React.Component {
                     if (displayEvent === true) {
                         eventCount += 1;
                         return (
-                            <div className="event_container" key={ele._id}><p>{ele.title}</p>
-                            <p>{ele.location}</p>
+                            <div className="event_container" key={ele._id}>
+                            <div className="row">
+                                <div className="event_top_left_space">
+                                <p className="event_title">{ele.title}</p>
+                                </div>
+                                <div className="event_top_right_space">
+                                    {response.data.loggedIn && <DotOne onOff={dotOne.onOff} eventId={ele._id} />}
+                                    {response.data.loggedIn && <DotTwo onOff={dotTwo.onOff} eventId={ele._id} />}
+                                </div>
+                            </div>
+                            
                             <p>{ele.description}</p>
-                            {response.data.loggedIn && <DotOne onOff={dotOne.onOff} eventId={ele._id} />}
-                            {response.data.loggedIn && <DotTwo onOff={dotTwo.onOff} eventId={ele._id} />}</div>
+                            <p>{ele.location}</p>
+                            </div>
                         );
                     }
                 });
@@ -128,12 +137,12 @@ class EventFeed extends React.Component {
     render() {
         return (
             <div className="mid_section">
-                <h2>Event Feed</h2>
+                <h2>Upcoming Events</h2>
                 {this.state.signedIn && <div className="event_feed_tab_container">
                     
-                        <span className="tab" style={{color: this.state.feed === "all" ? "white" : "rgba(255, 255, 255, .4)"}} onClick={this.allFilterHandler}>All</span>
-                        <span className="interestedTab" style={{color: this.state.feed === "interested" ? "white" : "rgba(255, 255, 255, .4)"}} onClick={this.interestedFilterHandler} title="Only show events you're interested in">Interested</span>
-                        <span className="tab" style={{color: this.state.feed === "going" ? "white" : "rgba(255, 255, 255, .4)"}} onClick={this.goingFilterHandler} title="Only show events you're going to">Going</span>
+                        <span className="tab" style={{color: this.state.feed === "all" ? "black" : "rgba(100, 100, 100, .4)"}} onClick={this.allFilterHandler}>All</span>
+                        <span className="interestedTab" style={{color: this.state.feed === "interested" ? "black" : "rgba(100, 100, 100, .4)"}} onClick={this.interestedFilterHandler} title="Only show events you're interested in">Interested</span>
+                        <span className="tab" style={{color: this.state.feed === "going" ? "black" : "rgba(100, 100, 100, .4)"}} onClick={this.goingFilterHandler} title="Only show events you're going to">Going</span>
                     
                 </div>}
                 {!this.state.signedIn && <Link className="message_link" to="/login"><p className="message">Sign in to access more features.</p></Link>}

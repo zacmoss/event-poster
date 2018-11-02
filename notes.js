@@ -74,6 +74,8 @@
 
     Maybe add event feed filter
 
+    Upload to production shell for git and heroku
+    
     Clear server.js clutter
 
     Clear un-needed files
